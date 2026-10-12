@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gyoza King — Taitettu käsin, paistettu kullanruskeaksi · Kluuvi, Helsinki</title>
+<meta name="description" content="Gyoza King — hand-folded gyoza in Kluuvi, Helsinki. Rated 4.8 on Google. The king of dumplings.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Outfit:wght@300..800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#100f0c; --bg2:#191712; --card:#1e1c15;
+    --ink:#f7f3e8; --muted:#b5ad98;
+    --accent:#d9a821; --accent-bright:#f2c94c; --accent2:#c0392b; --accent2-deep:#96281b;
+    --line:rgba(247,243,232,.09);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:"Outfit",system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+  ::selection{background:var(--accent);color:#111}
+  h1,h2,h3{font-family:"Playfair Display",serif}
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:16px 5vw;background:rgba(16,15,12,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .logo{font-family:"Playfair Display",serif;font-weight:800;font-size:1.25rem}
+  .logo span{color:var(--accent-bright)}
+  nav ul{display:flex;gap:24px;list-style:none;align-items:center}
+  nav a{color:var(--muted);text-decoration:none;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;transition:color .25s}
+  nav a:hover{color:var(--ink)}
+  .lang-toggle{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer;font-family:inherit;font-size:.8rem}
+  .lang-toggle:hover{border-color:var(--accent)}
+  @media(max-width:820px){nav ul li:not(:last-child){display:none}}
+  header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:130px 6vw 70px;position:relative}
+  header::before{content:"";position:absolute;inset:0;background:radial-gradient(800px 500px at 75% 15%,rgba(217,168,33,.16),transparent 60%),radial-gradient(600px 500px at 10% 90%,rgba(192,57,43,.1),transparent 60%);pointer-events:none}
+  .kicker{display:inline-flex;align-items:center;gap:10px;color:var(--accent-bright);font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;margin-bottom:26px}
+  .kicker::before{content:"";width:34px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+  h1{font-size:clamp(2.5rem,6.2vw,4.6rem);line-height:1.05;font-weight:800;max-width:16ch}
+  h1 em{font-style:normal;color:var(--accent-bright)}
+  .hero-sub{margin-top:24px;max-width:52ch;color:var(--muted);font-size:1.08rem}
+  .hero-actions{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:14px 30px;border-radius:999px;font-weight:700;text-decoration:none;font-size:.92rem;transition:transform .2s,filter .2s;cursor:pointer;border:none;font-family:inherit}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:linear-gradient(120deg,var(--accent),var(--accent2));color:#fff}
+  .btn-primary:hover{filter:brightness(1.15)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink);background:none}
+  .btn-ghost:hover{background:var(--bg2)}
+  .hero-figure{margin-top:56px;border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .hero-figure img{width:100%;display:block;aspect-ratio:21/9;object-fit:cover}
+  section{padding:84px 6vw}
+  .section-head{max-width:720px;margin-bottom:48px}
+  .section-head h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;line-height:1.15}
+  .section-head h2 em{font-style:normal;color:var(--accent-bright)}
+  .section-head p{margin-top:14px;color:var(--muted)}
+  .dishes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+  .dish{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .3s,border-color .3s}
+  .dish:hover{transform:translateY(-6px);border-color:rgba(217,168,33,.5)}
+  .dish img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block}
+  .dish-body{padding:22px 24px 26px}
+  .dish-body h3{font-size:1.2rem;font-weight:800;margin-bottom:8px}
+  .dish-body p{color:var(--muted);font-size:.92rem}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:40px;display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+  @media(max-width:820px){.panel{grid-template-columns:1fr}}
+  .panel h2{font-size:clamp(1.6rem,3.4vw,2.2rem);font-weight:800;margin-bottom:14px}
+  .panel h2 em{font-style:normal;color:var(--accent2)}
+  .list{list-style:none;display:flex;flex-direction:column;gap:10px;color:var(--muted)}
+  .list li{display:flex;gap:12px;align-items:baseline}
+  .list li::before{content:"—";color:var(--accent);flex:0 0 auto}
+  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+  .info-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px}
+  .info-card h3{font-size:1.05rem;font-weight:800;margin-bottom:14px;color:var(--accent-bright)}
+  .info-card p,.info-card li{color:var(--muted);font-size:.95rem}
+  .info-card ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .info-card a{color:var(--accent-bright);text-decoration:none}
+  .info-card a:hover{text-decoration:underline}
+  .stars{color:var(--accent-bright);font-size:1.05rem;letter-spacing:.1em}
+  .cta-final{background:var(--bg2);border-top:1px solid var(--line);text-align:center}
+  .cta-final .inner{max-width:600px;margin:0 auto}
+  .cta-final h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800}
+  .cta-final h2 em{font-style:normal;color:var(--accent-bright)}
+  .cta-final p{margin:16px auto 30px;color:var(--muted)}
+  footer{padding:36px 6vw;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Gyoza <span>King</span></div>
+  <ul>
+    <li><a href="#alku" data-fi="Etusivu" data-en="Home">Etusivu</a></li>
+    <li><a href="#kunto" data-fi="Käsityö" data-en="Craft">Käsityö</a></li>
+    <li><a href="#ruoat" data-fi="Ruuat" data-en="Dishes">Ruuat</a></li>
+    <li><a href="#tiedot" data-fi="Tiedot" data-en="Find us">Tiedot</a></li>
+    <li><button class="lang-toggle" onclick="toggleLang()" id="langBtn">EN</button></li>
+  </ul>
+</nav>
+
+<header id="alku">
+  <div class="kicker">Kluuvi · Helsinki</div>
+  <h1 data-fi="Taitettu käsin. " data-en="Folded by hand. ">Taitettu käsin. <em data-fi="Kruunattu maulla." data-en="Crowned with flavour.">Kruunattu maulla.</em></h1>
+  <p class="hero-sub" data-fi="Gyoza King tekee yhden asian ja tekee sen kuninkaallisesti — gyozat, joita Kluuvi rakastaa." data-en="Gyoza King does one thing and does it royally — the gyoza Kluuvi loves.">Gyoza King tekee yhden asian ja tekee sen kuninkaallisesti — gyozat, joita Kluuvi rakastaa.</p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="#tiedot" data-fi="Löydä meidät" data-en="Find us">Löydä meidät</a>
+    <a class="btn btn-ghost" href="#ruoat" data-fi="Katso ruoat" data-en="See dishes">Katso ruoat</a>
+  </div>
+  <div class="hero-figure"><img src="assets/gk-hero.png" alt="Pan-fried gyoza with crispy skirt"></div>
+</header>
+
+<section id="ruoat">
+  <div class="section-head">
+    <h2 data-fi="Kuninkaan " data-en="The king's ">Kuninkaan <em data-fi="lautanen" data-en="plate">lautanen</em></h2>
+    <p data-fi="Jokainen nyytti taiteillaan käsin ja paistetaan kullanruskeaksi — rapea pohja, mehukas sisus." data-en="Every parcel is folded by hand and fried golden — crisp base, juicy heart.">Jokainen nyytti taiteillaan käsin ja paistetaan kullanruskeaksi — rapea pohja, mehukas sisus.</p>
+  </div>
+  <div class="dishes">
+    <div class="dish">
+      <img src="assets/gk-hero.png" alt="Gyoza plate">
+      <div class="dish-body">
+        <h3 data-fi="Paistetut gyozat" data-en="Pan-fried gyoza">Paistetut gyozat</h3>
+        <p data-fi="Klassikko: rapea hattara pohjassa, mehukas täyte sisällä — dipinä soija ja chiliöljy." data-en="The classic: crisp lace underneath, juicy filling inside — with soy and chilli oil for dipping.">Klassikko: rapea hattara pohjassa, mehukas täyte sisällä — dipinä soija ja chiliöljy.</p>
+      </div>
+    </div>
+    <div class="dish">
+      <img src="assets/gk-detail.png" alt="Hand-folded gyoza">
+      <div class="dish-body">
+        <h3 data-fi="Käsityön jälki" data-en="Signs of the craft">Käsityön jälki</h3>
+        <p data-fi="Taitosten määrä kertoo kaiken — meidän gyozoissa lasketaan jokainen poimu." data-en="The pleats tell the whole story — we count every fold on our gyoza.">Taitosten määrä kertoo kaiken — meidän gyozoissa lasketaan jokainen poimu.</p>
+      </div>
+    </div>
+    <div class="dish">
+      <img src="assets/gk-plate.png" alt="Gyoza with salad">
+      <div class="dish-body">
+        <h3 data-fi="Koko ateria" data-en="The full meal">Koko ateria</h3>
+        <p data-fi="Gyozat, raikas kurkkusalaatti ja chiliöljy — lounaaksi, illalliseksi tai välipalaksi." data-en="Gyoza, fresh cucumber salad and chilli oil — for lunch, dinner or a snack.">Gyozat, raikas kurkkusalaatti ja chiliöljy — lounaaksi, illalliseksi tai välipalaksi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kunto" style="background:var(--bg2)">
+  <div class="panel">
+    <div>
+      <h2 data-fi="Yksi asia. " data-en="One thing. ">Yksi asia. <em data-fi="Täydellisesti." data-en="Perfected.">Täydellisesti.</em></h2>
+      <p style="color:var(--muted);margin-bottom:18px" data-fi="Ei pitkää menua — vain gyozat, joihin keskittyminen on nähty." data-en="No long menu — just gyoza with visible dedication.">Ei pitkää menua — vain gyozat, joihin keskittyminen on nähty.</p>
+      <ul class="list">
+        <li data-fi="Taikina ja täyte tehdään paikan päällä" data-en="Dough and filling made on site">Taikina ja täyte tehdään paikan päällä</li>
+        <li data-fi="Taitettu käsin, paistettu tilauksesta" data-en="Folded by hand, fried to order">Taitettu käsin, paistettu tilauksesta</li>
+        <li data-fi="Mukaan tai syö täällä" data-en="Takeaway or eat in">Mukaan tai syö täällä</li>
+        <li data-fi="Kluuvi — keskustan sykkeessä" data-en="Kluuvi — in the pulse of the centre">Kluuvi — keskustan sykkeessä</li>
+      </ul>
+    </div>
+    <div class="info-card" style="text-align:center">
+      <div class="stars">★★★★★</div>
+      <p style="margin-top:10px;font-size:1.3rem;font-weight:800;color:var(--ink)">4.8</p>
+      <p style="font-size:.9rem" data-fi="54 arvostelua Google Mapsissa" data-en="54 reviews on Google Maps">54 arvostelua Google Mapsissa</p>
+      <p style="margin-top:8px;font-size:.85rem" data-fi="Kluuvin gyoza-kuningas" data-en="Kluuvi's gyoza king">Kluuvin gyoza-kuningas</p>
+    </div>
+  </div>
+</section>
+
+<section id="tiedot">
+  <div class="section-head">
+    <h2 data-fi="Löydä " data-en="Find ">Löydä <em data-fi="meidät" data-en="us">meidät</em></h2>
+  </div>
+  <div class="info-grid">
+    <div class="info-card">
+      <h3 data-fi="Sijainti" data-en="Location">Sijainti</h3>
+      <p data-fi="Kluuvi, Helsingin keskusta" data-en="Kluuvi, central Helsinki">Kluuvi, Helsingin keskusta</p>
+    </div>
+    <div class="info-card">
+      <h3 data-fi="Aukioloajat" data-en="Opening hours">Aukioloajat</h3>
+      <p data-fi="Tarkemmat ajat soittamalla" data-en="Call us for exact hours">Tarkemmat ajat soittamalla</p>
+    </div>
+    <div class="info-card">
+      <h3 data-fi="Yhteystiedot" data-en="Contact">Yhteystiedot</h3>
+      <p><a href="https://www.google.com/maps/search/?api=1&query=Gyoza+King+Kluuvi+Helsinki" target="_blank" data-fi="Soita tai hae reitti Google Mapsista →" data-en="Call or get directions on Google Maps →">Soita tai hae reitti Google Mapsista →</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="inner">
+    <h2 data-fi="Pitkä eläköön " data-en="Long live ">Pitkä eläköön <em data-fi="kuningas" data-en="the king">kuningas</em></h2>
+    <p data-fi="Tule maistamaan, miksi asiakkaat palaavat — gyoza odottaa." data-en="Come taste why guests keep coming back — the gyoza awaits.">Tule maistamaan, miksi asiakkaat palaavat — gyoza odottaa.</p>
+    <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Gyoza+King+Kluuvi+Helsinki" target="_blank" data-fi="Hae reitti" data-en="Get directions">Hae reitti</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Gyoza King · Kluuvi, Helsinki</span>
+  <span data-fi="Taitettu käsin, kruunattu maulla" data-en="Folded by hand, crowned with flavour">Taitettu käsin, kruunattu maulla</span>
+</footer>
+
+<script>
+let lang='fi';
+function toggleLang(){
+  lang = lang==='fi' ? 'en' : 'fi';
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-fi]').forEach(el=>{
+    const t = el.getAttribute('data-'+lang);
+    if(t!==null) el.innerHTML = t;
+  });
+  document.getElementById('langBtn').textContent = lang==='fi' ? 'EN' : 'FI';
+}
+</script>
+</body>
+</html>
